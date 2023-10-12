@@ -18,3 +18,7 @@ def test_get_emoji(page, test_web_address): # Note new parameters
     expect(strong_tag).to_have_text(":)")
 
 # === End Example Code ===
+
+# def test_get_album(page, test_web_address):
+#     page.goto(f"http://{test_web_address}/albums/<int:2>'")
+#     assert

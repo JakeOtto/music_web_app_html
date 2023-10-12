@@ -44,6 +44,9 @@ INSERT INTO albums (title, release_year, artist_id) VALUES ('Here Comes the Sun'
 INSERT INTO albums (title, release_year, artist_id) VALUES ('Fodder on My Wings', 1982, 4);
 INSERT INTO albums (title, release_year, artist_id) VALUES ('Ring Ring', 1973, 2);
 
+-- psql -h 127.0.0.1 music_web_app_db < music_library.sql
+-- psql -h 127.0.0.1 music_web_app_db_test < music_library.sql
+
 
 -- -- MAKING A NEW TABLE TO GET ALBUMS WITH ARTIST NAME:
 -- DROP TABLE IF EXISTS albums_with_artists;
