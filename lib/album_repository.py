@@ -46,5 +46,3 @@ class AlbumRepository:
             'DELETE FROM albums WHERE id = %s', [id]
         )
         return None
-
-
