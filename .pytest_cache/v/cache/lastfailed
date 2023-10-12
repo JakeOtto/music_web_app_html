@@ -1,0 +1,7 @@
+{
+  "tests/test_example_routes.py::test_get_books[chromium]": true,
+  "tests/test_example_routes.py::test_get_book[chromium]": true,
+  "tests/test_example_routes.py::test_create_book[chromium]": true,
+  "tests/test_example_routes.py::test_create_book_error[chromium]": true,
+  "tests/test_example_routes.py::test_delete_book[chromium]": true
+}

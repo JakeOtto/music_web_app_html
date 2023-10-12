@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template
 from lib.database_connection import get_flask_database_connection
 
 from lib.album import Album
@@ -28,13 +28,15 @@ def get_album(id):
     album = album_repository.find(id)
     return render_template('albums/show.html', album=album)
 
-@app.route('/albums', methods=['GET'])
-def get_albums():
-    connection = get_flask_database_connection(app)
-    album_repository = AlbumRepository(connection)
-    albums = album_repository.all() #switched to list of dictionaries with artist_name included
-    return render_template('albums/index.html', albums=albums)
 
+@app.route('/albums', methods=['GET'])
+def all_albums():
+    connection = get_flask_database_connection(app)
+    album_repo = AlbumRepository(connection)
+    albums = album_repo.all()
+    print(type(albums))
+    
+    return albums
 
 @app.route('/artists/<int:id>', methods=['GET'])
 def get_artist(id):
@@ -50,6 +52,19 @@ def get_artists():
     artist_repository = ArtistRepository(connection)
     artists = artist_repository.all()
     return render_template('artists/index.html', artists=artists)
+
+
+
+# GET /emoji
+# Returns a smiley face in HTML
+# Try it:
+#   ; open http://localhost:5001/emoji
+@app.route('/emoji', methods=['GET'])
+def get_emoji():
+    # We use `render_template` to send the user the file `emoji.html`
+    # But first, it gets processed to look for placeholders like {{ emoji }}
+    # These placeholders are replaced with the values we pass in as arguments
+    return render_template('emoji.html', emoji=':)')
 
 
 

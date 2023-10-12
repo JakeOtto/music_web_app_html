@@ -10,15 +10,16 @@ class AlbumRepository:
 
     # Retrieve all albums
     def all(self):
-        rows = self._connection.execute('SELECT albums.id AS album_id, albums.title, artists.name as artist_name, albums.release_year FROM artists JOIN albums ON albums.artist_id = artists.id')
-        albums = []
+        rows = self._connection.execute('SELECT * FROM albums')
+        albums_list = []
         for row in rows:
-            item = {"album_id": row["album_id"],
-                    "title": row["title"],
-                    "artist_name": row["artist_name"],
-                    "release_year": row["release_year"]}
-            albums.append(item)
-        return albums
+            album = Album(row['id'], row['title'], row['release_year'], row['artist_name'] )
+            # print(json.dumps(album))
+            albums_list.append(album.__dict__())
+            print(albums_list)
+            print("_______")
+            print(type(albums_list))
+        return albums_list
     
     # Find a single album by their id
     def find(self, id):
